@@ -1,0 +1,127 @@
+# .aliases: aliase file
+# last updated : 2011/01/08
+
+# for XWindow environment
+if ($?DISPLAY) then
+  if ( `uname` == "FreeBSD" || `uname` == "Linux" ) then
+    if ( -x '/usr/local/bin/emacs-23.2' ) then
+      alias emacs23  'env XMODIFIERS=@im=none emacs-23.2 -geometry +0+0 \!* &'
+    else if (-x '/usr/local/bin/emcws-23.1') then
+      alias emacs23  'env XMODIFIERS=@im=none emcws-23.1 -geometry +0+0 \!* &'
+    endif
+
+    if (`alias emacs23` != "") then
+      alias emacs     emacs23
+    endif
+  endif
+
+  alias acroread  'acroread \!* &'
+  alias kterm     'kterm -sb \!* &'
+  alias galaga        'xgalaga -nosound &'
+  alias firefox  '(\firefox \!* >& /dev/null) &'
+  alias linux-firefox  '(\linux-firefox \!* >& /dev/null) &'
+  alias opera          'opera \!* &'
+  #alias openoffice 'openoffice \!* &'
+
+  alias mplayer  'mplayer -vo x11'
+else # console only
+  if ( `uname` == "FreeBSD" || `uname` == "Linux" ) then
+    if (-x '/usr/local/bin/emcws-21.3') then
+      alias emacs21  'env TERM=xterm-color XMODIFIERS=@im=none emcws-21.3 -nw'
+    else if (-x '/usr/local/bin/emcws-21.4') then
+      alias emacs21  'env XMODIFIERS=@im=none emcws-21.4 -nw'
+    else if (-x '/usr/local/bin/emacs-21.3') then
+      alias emacs21  'env XMODIFIERS=@im=none emacs-21.3 -nw'
+    else if (-x '/usr/local/bin/emacs-21.4') then
+      alias emacs21  'env XMODIFIERS=@im=none emacs-21.4 -nw'
+    endif
+
+    if (`alias emacs21` != "") then
+      alias emacs     emacs21
+    endif
+  endif
+    alias x    'xinit'  
+    alias off  'shutdown -p now'
+    alias reboot  'shutdown -r now'
+endif
+
+# Solarisではページャはmoreの方が望ましいことが多いので場合分け
+# lsも-Gオプションがないので、これも場合分け
+if (`uname` == "FreeBSD") then
+  alias less 'jless -X'
+  alias more 'jless -EX'
+  set p="less"
+  alias psm 'ps -aux | less'
+  alias su  'su -m'    
+  alias ls 'ls -FG'
+else if(`uname` == "Linux") then
+  alias ls 'ls --color=auto -F'
+  alias su 'su -m'
+  alias less 'less -X'
+  alias more 'less -EX'
+  set p="less"
+else if(`uname` == "SunOS") then # Solaris
+  if (-x "/usr/local/bin/less") then
+    set p="less"
+    alias more "jless -EX"
+  else
+    set p="more"
+    alias psm "ps -aef | $p"
+  endif
+else if (`uname | grep -i cygwin` != "") then # cygwin
+  if ( -x "/usr/local/bin/jless" ) then
+    set p="jless"
+    alias more "jless -EX"
+  else
+    set p="more"
+  endif
+else
+  if (-x "/usr/local/bin/ls") then
+    alias ls 'ls -F --color=auto'
+  else
+    alias ls 'ls -F'
+  endif
+endif
+
+alias lsm  "ls -FC \!* | $p"
+alias lam  "ls -AFC \!* | $p"
+alias llm  "ls -lhA \!* | $p"
+unset p
+
+alias h    'history 25'
+alias j    'jobs -l'
+alias la  'ls -a'
+alias lf  'ls -FA'
+alias ll  'ls -lhA'
+alias jls       '/usr/local/bin/jls -F'
+alias mv  'mv -i'
+#alias rm  'rm -i'
+alias cp        'cp -i'
+alias s    'rehash;source ~/.cshrc'
+
+
+#alias e         'exit'
+alias md        'mkdir'
+alias a2ps  'a2ps-j'
+alias df  'df -h'
+#alias nkf  'qkc -nkf'
+if (`uname` == "FreeBSD") then
+    alias wc  'wc -mlw'
+endif
+
+alias du        'du -h'
+
+alias rmchi     '\rm *~;\rm .*~'
+alias f 'finger'
+
+alias pdf2ps    '\acroread -toPostScript -size letter | psnup -pletter -2'
+
+alias ..  'cd ..'
+alias cd..  'cd ..'
+alias /    'cd /'
+alias -    'cd -'
+alias pu  'pushd'
+alias po  'popd'
+
+alias byte-compile  'emacs -batch -f batch-byte-compile \!*'
+#alias xalan  'java org.apache.xalan.xslt.Process -in \!:1 -xsl \!:2 -out \!:3'
