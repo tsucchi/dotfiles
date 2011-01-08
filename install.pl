@@ -14,12 +14,15 @@ die "current directory is not $work_dir" if ( getcwd() ne $work_dir );
 
 my $my_program = basename($0);
 opendir(my $dir, '.');
-my @dotfiles = grep { $_ ne $my_program} grep { $_ !~ /\A\.\.?\z/xms } readdir($dir);
+my @dotfiles = grep { $_ ne $my_program}
+               grep { $_ !~ /\A\.\.?\z/xms }
+               grep { $_ !~ /\A.gitignore\z/xms } readdir($dir);
 closedir($dir);
 
 
 for my $dotfile ( @dotfiles ) {
     my $newfile = File::Spec->catfile($home, $dotfile);
+    next if ( -d $dotfile );
     unlink $newfile if ( -e $newfile );
     copy $dotfile, $newfile or die $!;
 }
