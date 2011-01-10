@@ -40,7 +40,7 @@ else # console only
       alias emacs     emacs21
     endif
   endif
-    alias x    'xinit'  
+    alias x    'xinit'
     alias off  'shutdown -p now'
     alias reboot  'shutdown -r now'
 endif
@@ -52,7 +52,7 @@ if (`uname` == "FreeBSD") then
   alias more 'jless -EX'
   set p="less"
   alias psm 'ps -aux | less'
-  alias su  'su -m'    
+  alias su  'su -m'
   alias ls 'ls -FG'
 else if(`uname` == "Linux") then
   alias ls 'ls --color=auto -F'
@@ -75,7 +75,11 @@ else if (`uname | grep -i cygwin` != "") then # cygwin
   else
     set p="more"
   endif
+else if (`uname` == "Darwin" ) then # mac
+  set p="less"
+  alias ls 'ls -FG'
 else
+  set p="less"
   if (-x "/usr/local/bin/ls") then
     alias ls 'ls -F --color=auto'
   else
