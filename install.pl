@@ -14,7 +14,7 @@ die "current directory is not $work_dir" if ( getcwd() ne $work_dir );
 
 my $my_program = basename($0);
 opendir(my $dir, '.');
-my @dotfiles = grep { $_ ne $my_program}
+my @dotfiles = grep { $_ ~= /\A\./xms }
                grep { $_ !~ /\A\.\.?\z/xms }
                grep { $_ !~ /\A.gitignore\z/xms } readdir($dir);
 closedir($dir);
