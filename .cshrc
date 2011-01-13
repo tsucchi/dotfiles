@@ -1,6 +1,6 @@
 #  .cshrc for FreeBSD/Solaris/Linux/(ちょっとだけ)cygwin
 #  
-#       last updated : 2011/01/08
+#       last updated : 2011/01/13
 #       modified by tsucchi
 
 if ( "`uname`" == "SunOS" ) then
@@ -90,6 +90,11 @@ endif
 if (`uname | grep -i cygwin` == "") then
   # cygwin の tcsh には limit がない
   limit coredumpsize 0
+endif
+
+# load host-local file
+if ( -e ~/.hostlocal ) then
+  source ~/.hostlocal
 endif
 
 # perlbrew
