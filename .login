@@ -21,10 +21,10 @@ if (`uname` == "FreeBSD") then
     #setenv JSERVER localhost
     #setenv XMODIFIERS "@im=kinput2"
     setenv XMODIFIERS "@im=SCIM"
-    setenv LC_ALL ja_JP.eucJP
-    setenv LC_CTYPE ja_JP.eucJP
-    setenv LC_MESSAGES ja_JP.eucJP
-    setenv LANG ja_JP.eucJP
+    setenv LC_ALL ja_JP.UTF-8
+    setenv LC_CTYPE ja_JP.UTF-8
+    setenv LC_MESSAGES ja_JP.UTF-8
+    setenv LANG ja_JP.UTF-8
     #setenv PAGER jless
     #setenv JAVA_HOME /usr/local/jdk1.4.2
     #setenv JAVA_HOME /usr/local/jdk1.5.0
