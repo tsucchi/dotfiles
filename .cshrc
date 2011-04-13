@@ -1,6 +1,6 @@
 #  .cshrc for FreeBSD/Solaris/Linux/(ちょっとだけ)cygwin
 #  
-#       last updated : 2011/01/13
+#       last updated : 2011/03/31
 #       modified by tsucchi
 
 if ( "`uname`" == "SunOS" ) then
@@ -12,10 +12,10 @@ if ( "`uname`" == "Linux") then
   setenv LD_LIBRARY_PATH /usr/local/lib
 
   setenv XMODIFIERS "@im=SCIM"
-  setenv LC_ALL ja_JP.eucJP
-  setenv LC_CTYPE ja_JP.eucJP
-  setenv LC_MESSAGES ja_JP.eucJP
-  setenv LANG ja_JP.eucJP
+  setenv LC_ALL ja_JP.utf8
+  setenv LC_CTYPE ja_JP.utf8
+  setenv LC_MESSAGES ja_JP.utf8
+  setenv LANG ja_JP.utf8
   setenv PAGER less
 
   unset autocorrect
