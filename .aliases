@@ -1,5 +1,5 @@
 # .aliases: aliase file
-# last updated : 2011/01/08
+# last updated : 2011/04/14
 
 # for XWindow environment
 if ($?DISPLAY) then
@@ -48,8 +48,10 @@ endif
 # Solarisではページャはmoreの方が望ましいことが多いので場合分け
 # lsも-Gオプションがないので、これも場合分け
 if (`uname` == "FreeBSD") then
-  alias less 'jless -X'
-  alias more 'jless -EX'
+  if ( -x "/usr/local/bin/jless" ) then
+    alias less 'jless -X'
+    alias more 'jless -EX'
+  endif 
   set p="less"
   alias psm 'ps -aux | less'
   alias su  'su -m'
