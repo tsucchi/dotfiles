@@ -1,10 +1,12 @@
 # .aliases: aliase file
-# last updated : 2011/04/14
+# last updated : 2011/05/13
 
 # for XWindow environment
 if ($?DISPLAY) then
   if ( `uname` == "FreeBSD" || `uname` == "Linux" ) then
-    if ( -x '/usr/local/bin/emacs-23.2' ) then
+    if ( -x '/usr/local/bin/emacs-23.3' ) then
+      alias emacs23  'env XMODIFIERS=@im=none emacs-23.3 -geometry +0+0 \!* &'
+    else if ( -x '/usr/local/bin/emacs-23.2' ) then
       alias emacs23  'env XMODIFIERS=@im=none emacs-23.2 -geometry +0+0 \!* &'
     else if (-x '/usr/local/bin/emcws-23.1') then
       alias emacs23  'env XMODIFIERS=@im=none emcws-23.1 -geometry +0+0 \!* &'
