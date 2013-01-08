@@ -1,0 +1,13 @@
+Module::Install
+Module::Install::AuthorTests
+Module::Install::AuthorRequires
+Module::Install::ReadmeFromPod
+Module::Install::ReadmePodFromPod
+Module::Install::ReadmeMarkdownFromPod
+Module::Install::AutoSetRepository
+Module::Install::Repository
+Module::Install::GithubMeta
+Test::Synopsis
+Test::Perl::Critic
+Test::Pod
+Test::Pod::Coverage
