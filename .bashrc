@@ -16,7 +16,7 @@ alias s='source ~/.bashrc'
 alias ..='cd ..'
 alias su='su -m'
 alias emacs='env XMODIFIERS=@im=none emacs'
-alias rmchi='rm *~ .*~'
+alias rmchi='rm -f *~ .*~'
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
