@@ -11,3 +11,4 @@ Test::Perl::Critic
 Test::Pod
 Test::Pod::Coverage
 Test::CheckManifest
+Test::Module::Used
