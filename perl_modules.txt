@@ -10,5 +10,7 @@ Test::Synopsis
 Test::Perl::Critic
 Test::Pod
 Test::Pod::Coverage
+ShipIt
+cpan-upload-http
 Test::CheckManifest
 Test::Module::Used
