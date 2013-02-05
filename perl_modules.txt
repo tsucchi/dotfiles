@@ -10,3 +10,4 @@ Test::Synopsis
 Test::Perl::Critic
 Test::Pod
 Test::Pod::Coverage
+Test::CheckManifest
