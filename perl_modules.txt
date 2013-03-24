@@ -11,6 +11,6 @@ Test::Perl::Critic
 Test::Pod
 Test::Pod::Coverage
 ShipIt
-cpan-upload-http
+CPAN::Uploader
 Test::CheckManifest
 Test::Module::Used
