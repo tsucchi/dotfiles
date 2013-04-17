@@ -6,6 +6,12 @@ Module::Install::ReadmePodFromPod
 Module::Install::ReadmeMarkdownFromPod
 Module::Install::Repository
 Module::Install::GithubMeta
+Module::Install::CPANfile
+Module::Build
+Module::Build::Pluggable
+Module::Build::Pluggable::CPANfile
+Module::Build::Pluggable::GithubMeta
+
 Test::Synopsis
 Test::Perl::Critic
 Test::Pod
