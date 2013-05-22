@@ -3,8 +3,10 @@ export IGNOREEOF=65536
 
 if [ "`whoami`" = "root" ] ; then
   export PS1="[\w]\n\[\033[0;31m\]\u@\h[\!]#\[\033[0m\] "
+  PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+  PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 fi
 
 export LS_COLORS="di=0;36:ex=0;31:ln=0;35:cd=0;43;34:so=0;32"
