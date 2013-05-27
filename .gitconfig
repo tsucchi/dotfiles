@@ -5,3 +5,5 @@
 	ui = auto
 [github]
 	user = tsucchi
+[push]
+	default = simple
