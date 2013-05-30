@@ -20,3 +20,8 @@ ShipIt
 CPAN::Uploader
 Test::CheckManifest
 Test::Module::Used
+Test::Spellunker
+Test::CPAN::Meta
+Minilla
+App::ph
+Test::MinimumVersion
