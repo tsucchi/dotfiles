@@ -105,7 +105,7 @@ body     { pointer-events: none; }
 /* COMMON STEP STYLES */
 
 .step {
-    width: 900px;
+    width: 1000px;
     padding: 40px;
 
     -webkit-box-sizing: border-box;
