@@ -11,7 +11,15 @@ fi
 
 export LS_COLORS="di=0;36:ex=0;31:ln=0;35:cd=0;43;34:so=0;32"
 
-alias ls='ls -F --color=auto'
+case "${OSTYPE}" in
+  darwin*)
+    alias ls="ls -F -G"
+  ;;
+  linux*)
+    alias ls='ls -F --color=auto'
+  ;;
+esac
+
 alias la='ls -A'
 alias ll='ls -lhA'
 alias s='source ~/.bashrc'
