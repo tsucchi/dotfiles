@@ -33,6 +33,10 @@ if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
+if [ -e "$HOME/.bashrc_hostlocal" ] ; then
+  source $HOME/.bashrc_hostlocal
+fi
+
 if [ -d $HOME/.rbenv ] ; then
   export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
