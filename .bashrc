@@ -28,6 +28,7 @@ alias su='su -m'
 alias emacs='env XMODIFIERS=@im=none emacs'
 alias rmchi='rm -f *~ .*~'
 alias less='less -X'
+alias cprove='env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
