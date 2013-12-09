@@ -1,11 +1,15 @@
 export EDITOR=vi
 export IGNOREEOF=65536
 
+if [ -e /etc/bash_completion.d/git ] ; then
+    source /etc/bash_completion.d/git
+fi
+
 if [ "`whoami`" = "root" ] ; then
   export PS1="[\w]\n\[\033[0;31m\]\u@\h[\!]#\[\033[0m\] "
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
-  export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+  export PS1="[\w] \$(__git_ps1 '\[\033[1;34m\](%s)\[\033[0m\]')\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 fi
 
@@ -28,7 +32,7 @@ alias su='su -m'
 alias emacs='env XMODIFIERS=@im=none emacs'
 alias rmchi='rm -f *~ .*~'
 alias less='less -X'
-alias cprove='env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
+alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
@@ -42,3 +46,4 @@ if [ -d $HOME/.rbenv ] ; then
   export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
 fi
+
