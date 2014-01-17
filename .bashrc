@@ -9,7 +9,11 @@ if [ "`whoami`" = "root" ] ; then
   export PS1="[\w]\n\[\033[0;31m\]\u@\h[\!]#\[\033[0m\] "
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
-  export PS1="[\w] \$(__git_ps1 '\[\033[1;34m\](%s)\[\033[0m\]')\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+  if [ -e /etc/bash_completion.d/git ] ; then
+    export PS1="[\w] \$(__git_ps1 '\[\033[1;34m\](%s)\[\033[0m\]')\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+  else
+    export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+  fi
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 fi
 
