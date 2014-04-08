@@ -37,13 +37,29 @@ __perl_ps1 ()
   fi
 }
 
+__python_ps1 ()
+{
+  if [ -f `which pyenv` ] ; then
+    pyenv_python_version=`pyenv version | sed -e 's/ .*//'`
+    if [ "$pyenv_python_version" = "" ] ; then
+      printf ""
+    elif [ "$pyenv_python_version" = "system" ] ; then
+      printf "[system-python]"
+    else
+      printf "[python-$pyenv_python_version]"
+    fi
+  else
+    printf ""
+  fi
+}
+
 
 if [ "`whoami`" = "root" ] ; then
   export PS1="[\w]\n\[\033[0;31m\]\u@\h[\!]#\[\033[0m\] "
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e /etc/bash_completion.d/git -o -e /etc/bash_completion.d/git-prompt.sh ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
@@ -84,3 +100,8 @@ if [ -d $HOME/.rbenv ] ; then
   eval "$(rbenv init -)"
 fi
 
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    eval "$(pyenv init -)"
+fi
