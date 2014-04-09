@@ -9,7 +9,7 @@ fi
 
 __ruby_ps1 ()
 {
-  if [ -f `which rbenv` ] ; then
+  if [ -e "$HOME/.rbenv" ] ; then
     rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`
     if [ "$rbenv_ruby_version" = "" ] ; then
       printf ""
@@ -25,7 +25,7 @@ __ruby_ps1 ()
 
 __perl_ps1 ()
 {
-  if [ -f `which perlbrew` ] ; then
+  if [ -e "$HOME/.perlbrew" ] ; then
     perlbrew_perl_version=`perlbrew list | grep '*' | sed 's/\* //'`
     if [ "$perlbrew_perl_version" = "" ] ; then
       printf "[system-perl]"
@@ -39,7 +39,7 @@ __perl_ps1 ()
 
 __python_ps1 ()
 {
-  if [ -f `which pyenv` ] ; then
+  if [ -e "$HOME/.pyenv" ] ; then
     pyenv_python_version=`pyenv version | sed -e 's/ .*//'`
     if [ "$pyenv_python_version" = "" ] ; then
       printf ""
