@@ -1,5 +1,6 @@
 export EDITOR=vi
 export IGNOREEOF=65536
+export PAGER='less -X'
 
 if [ -e /etc/bash_completion.d/git ] ; then
   source /etc/bash_completion.d/git
@@ -86,6 +87,7 @@ alias emacs='env XMODIFIERS=@im=none emacs'
 alias rmchi='rm -f *~ .*~'
 alias less='less -X'
 alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
+alias rijiserve='php -S 0:3650 -t blog'
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
