@@ -146,6 +146,8 @@ body     { pointer-events: none; }
     font-size: 50px;
     line-height: 1.2em;
     padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .step h3 {
@@ -153,6 +155,8 @@ body     { pointer-events: none; }
     font-size: 30px;
     line-height: 1.2em;
     padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .step ul {
