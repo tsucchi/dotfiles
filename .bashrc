@@ -88,6 +88,9 @@ alias rmchi='rm -f *~ .*~'
 alias less='less -X'
 alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
 alias rijiserve='php -S 0:3650 -t blog'
+alias enable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
+alias disable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
@@ -107,3 +110,6 @@ if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
+
+export GOPATH="$HOME/.go"
+export PATH=$GOPATH/bin:$PATH
