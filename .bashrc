@@ -90,7 +90,7 @@ alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^l
 alias rijiserve='php -S 0:3650 -t blog'
 alias enable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
 alias disable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
-
+alias markdown2impress='markdown2impress --google-analytics-account UA-2083680-7'
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
