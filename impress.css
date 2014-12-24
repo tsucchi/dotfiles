@@ -145,14 +145,16 @@ body     { pointer-events: none; }
 	border-left: 12px solid #5279E7;
     font-size: 50px;
     line-height: 1.2em;
-    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .step h3 {
 	border-left: 10px solid #5279E7;
     font-size: 30px;
     line-height: 1.2em;
-    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .step ul {

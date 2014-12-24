@@ -89,6 +89,9 @@ alias less='less -X'
 alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
 alias cprove_all='cover --delete; env PERL5OPT="-MDevel::Cover" prove -l'
 alias rijiserve='php -S 0:3650 -t blog'
+alias enable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
+alias disable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
@@ -115,3 +118,6 @@ if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
+
+export GOPATH="$HOME/.go"
+export PATH=$GOPATH/bin:$PATH
