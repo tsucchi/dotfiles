@@ -2,10 +2,8 @@ export EDITOR=vi
 export IGNOREEOF=65536
 export PAGER='less -X'
 
-if [ -e /etc/bash_completion.d/git ] ; then
-  source /etc/bash_completion.d/git
-elif [ -e /etc/bash_completion.d/git-prompt.sh ] ; then
-  source /etc/bash_completion.d/git-prompt.sh
+if [ -e $HOME/.git_completion ] ; then
+  source $HOME/.git_completion
 fi
 
 __ruby_ps1 ()
