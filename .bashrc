@@ -22,6 +22,22 @@ __ruby_ps1 ()
   fi
 }
 
+__scala_ps1 ()
+{
+  if [ -e "$HOME/.scalaenv" ] ; then
+    scalaenv_scala_version=`scalaenv version | sed -e 's/ .*//'`
+    if [ "$scalaenv_scala_version" = "" ] ; then
+      printf ""
+    elif [ "$scalaenv_scala_version" = "system" ] ; then
+      printf "[system-scala]"
+    else
+      printf "[$scalaenv_scala_version]"
+    fi
+  else
+    printf ""
+  fi
+}
+
 __perl_ps1 ()
 {
   if [ -e "$HOME/.perlbrew" ] ; then
@@ -58,7 +74,7 @@ if [ "`whoami`" = "root" ] ; then
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e /etc/bash_completion.d/git -o -e /etc/bash_completion.d/git-prompt.sh ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
@@ -111,6 +127,11 @@ if [ -d $HOME/.rbenv ] ; then
   eval "$(rbenv init -)"
 fi
 
+if [ -d $HOME/.scalaenv ] ; then
+  export PATH=$HOME/.scalaenv/bin:$PATH
+  eval "$(scalaenv init -)"
+fi
+
 export PYENV_ROOT="${HOME}/.pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
@@ -118,4 +139,4 @@ if [ -d "${PYENV_ROOT}" ]; then
 fi
 
 export GOPATH="$HOME/.go"
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:$HOME/activator:$PATH
