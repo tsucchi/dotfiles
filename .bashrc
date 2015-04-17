@@ -68,13 +68,21 @@ __python_ps1 ()
   fi
 }
 
+__screen_window ()
+{
+    if [ -n "$WINDOW" ] ; then
+        printf "$WINDOW:"
+    else
+        printf ""
+    fi
+}
 
 if [ "`whoami`" = "root" ] ; then
-  export PS1="[\w]\n\[\033[0;31m\]\u@\h[\!]#\[\033[0m\] "
+  export PS1="[\w]\n\[\033[0;31m\]\u@\h[\$(__screen_window)\!]#\[\033[0m\] "
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e $HOME/.git_completion ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
