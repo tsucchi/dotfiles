@@ -89,6 +89,11 @@ else
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 fi
 
+# screen の場合のみ。ウィンドウ名をカレントディレクトリにする
+if [ $TERM == 'screen' ]; then
+  PS1=${PS1}'\[\033k\W\033\\\]'
+fi
+
 export LS_COLORS="di=0;36:ex=0;31:ln=0;35:cd=0;43;34:so=0;32"
 
 case "${OSTYPE}" in
