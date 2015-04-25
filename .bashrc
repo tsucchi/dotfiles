@@ -70,7 +70,7 @@ __python_ps1 ()
 
 __screen_window ()
 {
-    if [ $TERM == 'screen' ] ; then
+    if [ -n "$WINDOW" ] ; then
         printf "$WINDOW:"
     else
         printf ""
