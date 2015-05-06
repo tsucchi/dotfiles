@@ -1,0 +1,12 @@
+keycode 100 = Control_R
+keycode 101 = Control_R
+add Control = Control_R
+
+keysym Alt_L = Meta_L Alt_L
+
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
