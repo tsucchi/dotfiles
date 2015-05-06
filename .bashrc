@@ -99,6 +99,8 @@ export LS_COLORS="di=0;36:ex=0;31:ln=0;35:cd=0;43;34:so=0;32"
 case "${OSTYPE}" in
   darwin*)
     alias ls="ls -F -G"
+    alias vim="mvim -v"
+    alias view="mview -v"
   ;;
   linux*)
     alias ls='ls -F --color=auto'
