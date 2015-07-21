@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root>
+    <symbol_map type="KeyCode" name="[" value="0x1e" />
+    <list>
+        <item>
+            <name>LeaveInsMode with EISUU</name>
+            <identifier>private.vim_keybind_apps_esc_with_eisuu</identifier>
+            <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+            <autogen>--KeyToKey-- KeyCode::[, VK_CONTROL, KeyCode::[, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+        </item>
+    </list>
+</root>
