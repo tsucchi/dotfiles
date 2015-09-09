@@ -121,6 +121,7 @@ alias rijiserve='php -S 0:3650 -t blog'
 alias enable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
 alias disable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
 alias markdown2impress='markdown2impress --google-analytics-account UA-2083680-7'
+alias screen-auto-attach='screen -r `screen -ls | grep Detached | awk "{ print $1 }" | head -1`'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
