@@ -8,3 +8,4 @@ caption always "%{= dw} %-w%{=busr dW}%n %t%{-}%+w %= %{=b dw}"
 
 termcapinfo xterm* ti@:te@
 defscrollback 10000
+maptimeout 0
