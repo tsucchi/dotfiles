@@ -115,6 +115,8 @@ alias su='su -m'
 alias emacs='env XMODIFIERS=@im=none emacs'
 alias rmchi='rm -f *~ .*~'
 alias less='less -X'
+alias vi='vim -u NONE --noplugin'
+
 alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
 alias cprove_all='cover --delete; env PERL5OPT="-MDevel::Cover" prove -l'
 alias rijiserve='php -S 0:3650 -t blog'
