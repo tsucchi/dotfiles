@@ -2,6 +2,10 @@ export EDITOR=vi
 export IGNOREEOF=65536
 export PAGER='less -X'
 
+export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
+export PYENV_ROOT="${HOME}/.pyenv"
+
+
 if [ -e $HOME/.git_completion ] ; then
   source $HOME/.git_completion
 fi
@@ -52,6 +56,21 @@ __perl_ps1 ()
   fi
 }
 
+__p6_ps1 ()
+{
+  if [ -d $RAKUDOBREW_ROOT ] ; then
+    rakudobrew_rakudo_version=`rakudobrew list | grep '*' | sed 's/\* //'`
+    if [ "$rakudobrew_rakudo_version" = "" ] ; then
+      printf ""
+    else
+      printf "[p6-$rakudobrew_rakudo_version]"
+    fi
+  else
+    printf ""
+  fi
+}
+
+
 __python_ps1 ()
 {
   if [ -e "$HOME/.pyenv" ] ; then
@@ -82,7 +101,7 @@ if [ "`whoami`" = "root" ] ; then
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e $HOME/.git_completion ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__p6_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
@@ -147,10 +166,15 @@ if [ -d $HOME/.scalaenv ] ; then
   eval "$(scalaenv init -)"
 fi
 
-export PYENV_ROOT="${HOME}/.pyenv"
+
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
+fi
+
+if [ -d "${RAKUDOBREW_ROOT}" ]; then
+    export PATH=${RAKUDOBREW_ROOT}/bin:${RAKUDOBREW_ROOT}/moar-nom/install/share/perl6/site/bin:$PATH
+    eval "$(rakudobrew init -)"
 fi
 
 export GOPATH="$HOME/.go"
