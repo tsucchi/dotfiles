@@ -180,5 +180,6 @@ if [ -d "${RAKUDOBREW_ROOT}" ]; then
     eval "$(rakudobrew init -)"
 fi
 
-export GOPATH="$HOME/.go"
-export PATH=$GOPATH/bin:$HOME/activator:$PATH
+export GOPATH="$HOME/.go/work"
+export GOROOT="$HOME/.go"
+export PATH=$GOPATH/bin:$HOME/activator:$HOME/perl6/bin:$HOME/perl6/share/perl6/site/bin:$PATH
