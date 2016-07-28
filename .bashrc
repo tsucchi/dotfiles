@@ -1,4 +1,4 @@
-export EDITOR=vi
+export EDITOR=vim
 export IGNOREEOF=65536
 export PAGER='less -X'
 
