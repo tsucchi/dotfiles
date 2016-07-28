@@ -5,6 +5,7 @@ export PAGER='less -X'
 export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
 export PYENV_ROOT="${HOME}/.pyenv"
 
+stty stop undef
 
 if [ -e $HOME/.git_completion ] ; then
   source $HOME/.git_completion
