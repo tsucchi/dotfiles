@@ -1,6 +1,7 @@
 export EDITOR='env TERM=xterm-256color emacsclient -t -a emacs'
 export IGNOREEOF=65536
 export PAGER='less -X'
+export LANG=ja_JP.UTF-8;
 
 export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -183,6 +184,6 @@ if [ -d "${RAKUDOBREW_ROOT}" ]; then
     eval "$(rakudobrew init -)"
 fi
 
-export GOPATH="$HOME/.go/work"
-export GOROOT="$HOME/.go"
+export GOPATH="$HOME/go/work"
+export GOROOT="/usr/local/opt/go/libexec"
 export PATH=$GOPATH/bin:$HOME/activator:$HOME/perl6/bin:$HOME/perl6/share/perl6/site/bin:$PATH
