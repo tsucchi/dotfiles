@@ -145,6 +145,7 @@ alias disable-dotfile-in-finder='defaults write com.apple.finder AppleShowAllFil
 alias markdown2impress='markdown2impress --google-analytics-account UA-2083680-7'
 alias screen-auto-attach='screen -r `screen -ls | grep Detached | awk "{ print $1 }" | sort -r | head -1`'
 alias ec='env TERM=xterm-256color emacsclient -t -a emacs'
+alias cdgr='cd $(git rev-parse --show-toplevel)'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
