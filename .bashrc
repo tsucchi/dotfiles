@@ -12,6 +12,10 @@ if [ -e $HOME/.git_completion ] ; then
   source $HOME/.git_completion
 fi
 
+if [ -e $HOME/.minio_completion ] ; then
+  source $HOME/.minio_completion
+fi
+
 __ruby_ps1 ()
 {
   if [ -e "$HOME/.rbenv" ] ; then
