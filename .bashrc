@@ -1,4 +1,4 @@
-export EDITOR='env TERM=xterm-256color emacsclient -t -a emacs'
+export EDITOR='vi'
 export IGNOREEOF=65536
 export PAGER='less -X'
 export LANG=ja_JP.UTF-8;
