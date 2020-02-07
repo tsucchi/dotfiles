@@ -126,6 +126,7 @@ case "${OSTYPE}" in
     alias ls="ls -F -G"
     alias vim="mvim -v"
     alias view="mview -v"
+	alias factor="gfactor"
   ;;
   linux*)
     alias ls='ls -F --color=auto'
@@ -188,6 +189,7 @@ if [ -d "${RAKUDOBREW_ROOT}" ]; then
     eval "$(rakudobrew init -)"
 fi
 
-export GOPATH="$HOME/go/work"
-export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="$HOME/go"
+#export GOROOT="/usr/local/opt/go/libexec"
 export PATH=$GOPATH/bin:$HOME/activator:$HOME/perl6/bin:$HOME/perl6/share/perl6/site/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
