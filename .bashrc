@@ -1,4 +1,10 @@
-export EDITOR='vi'
+hash code 2> /dev/null
+if [ $? -eq 0 ] ; then
+  export EDITOR='code --wait'
+else
+  export EDITOR='vi'
+fi
+
 export IGNOREEOF=65536
 export PAGER='less -X'
 export LANG=ja_JP.UTF-8;
@@ -126,7 +132,7 @@ case "${OSTYPE}" in
     alias ls="ls -F -G"
     alias vim="mvim -v"
     alias view="mview -v"
-	alias factor="gfactor"
+  	alias factor="gfactor"
   ;;
   linux*)
     alias ls='ls -F --color=auto'
