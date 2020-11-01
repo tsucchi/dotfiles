@@ -1,4 +1,10 @@
-export EDITOR='env TERM=xterm-256color emacsclient -t -a emacs'
+hash code 2> /dev/null
+if [ $? -eq 0 ] ; then
+  export EDITOR='code --wait'
+else
+  export EDITOR='vi'
+fi
+
 export IGNOREEOF=65536
 export PAGER='less -X'
 export LANG=ja_JP.UTF-8
@@ -126,6 +132,7 @@ case "${OSTYPE}" in
     alias ls="ls -F -G"
     alias vim="mvim -v"
     alias view="mview -v"
+  	alias factor="gfactor"
   ;;
   linux*)
     alias ls='ls -F --color=auto'
@@ -188,6 +195,7 @@ if [ -d "${RAKUDOBREW_ROOT}" ]; then
     eval "$(rakudobrew init -)"
 fi
 
-export GOPATH="$HOME/go/work"
-export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="$HOME/go"
+#export GOROOT="/usr/local/opt/go/libexec"
 export PATH=$GOPATH/bin:$HOME/activator:$HOME/perl6/bin:$HOME/perl6/share/perl6/site/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
