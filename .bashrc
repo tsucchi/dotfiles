@@ -1,7 +1,7 @@
 export EDITOR='env TERM=xterm-256color emacsclient -t -a emacs'
 export IGNOREEOF=65536
 export PAGER='less -X'
-export LANG=ja_JP.UTF-8;
+export LANG=ja_JP.UTF-8
 
 export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
 export PYENV_ROOT="${HOME}/.pyenv"
