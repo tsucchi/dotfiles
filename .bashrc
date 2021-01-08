@@ -7,7 +7,10 @@ fi
 
 export IGNOREEOF=65536
 export PAGER='less -X'
+export LESSCHARSET=utf-8
 export LANG=ja_JP.UTF-8
+export LANGUAGE=ja_JP.UTF-8
+export LC_ALL=C
 
 export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -158,6 +161,9 @@ alias markdown2impress='markdown2impress --google-analytics-account UA-2083680-7
 alias screen-auto-attach='screen -r `screen -ls | grep Detached | awk "{ print $1 }" | sort -r | head -1`'
 alias ec='env TERM=xterm-256color emacsclient -t -a emacs'
 alias cdgr='cd $(git rev-parse --show-toplevel)'
+alias tmux='tmux -u'
+alias tmux-mouse-on='tmux set -g mouse on'
+alias tmux-mouse-off='tmux set -g mouse off'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
