@@ -6,7 +6,7 @@ else
 fi
 
 export IGNOREEOF=65536
-export PAGER='less -X'
+export PAGER='less -X -R'
 export LESSCHARSET=utf-8
 export LANG=ja_JP.UTF-8
 export LANGUAGE=ja_JP.UTF-8
