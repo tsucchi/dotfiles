@@ -6,8 +6,11 @@ else
 fi
 
 export IGNOREEOF=65536
-export PAGER='less -X'
-export LANG=ja_JP.UTF-8;
+export PAGER='less -X -R'
+export LESSCHARSET=utf-8
+export LANG=ja_JP.UTF-8
+export LANGUAGE=ja_JP.UTF-8
+export LC_ALL=C
 
 export RAKUDOBREW_ROOT="${HOME}/.rakudobrew"
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -32,22 +35,6 @@ __ruby_ps1 ()
       printf "[system-ruby]"
     else
       printf "[ruby-$rbenv_ruby_version]"
-    fi
-  else
-    printf ""
-  fi
-}
-
-__scala_ps1 ()
-{
-  if [ -e "$HOME/.scalaenv" ] ; then
-    scalaenv_scala_version=`scalaenv version | sed -e 's/ .*//'`
-    if [ "$scalaenv_scala_version" = "" ] ; then
-      printf ""
-    elif [ "$scalaenv_scala_version" = "system" ] ; then
-      printf "[system-scala]"
-    else
-      printf "[$scalaenv_scala_version]"
     fi
   else
     printf ""
@@ -113,7 +100,7 @@ if [ "`whoami`" = "root" ] ; then
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e $HOME/.git_completion ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__p6_ps1)\$(__scala_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__p6_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
@@ -159,6 +146,9 @@ alias screen-auto-attach='screen -r `screen -ls | grep Detached | awk "{ print $
 alias ec='env TERM=xterm-256color emacsclient -t -a emacs'
 alias cdgr='cd $(git rev-parse --show-toplevel)'
 alias pecode='code `find . | peco`'
+alias tmux='tmux -u'
+alias tmux-mouse-on='tmux set -g mouse on'
+alias tmux-mouse-off='tmux set -g mouse off'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
@@ -183,12 +173,6 @@ if [ -d $HOME/.rbenv ] ; then
   export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
 fi
-
-if [ -d $HOME/.scalaenv ] ; then
-  export PATH=$HOME/.scalaenv/bin:$PATH
-  eval "$(scalaenv init -)"
-fi
-
 
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
