@@ -158,6 +158,7 @@ alias markdown2impress='markdown2impress --google-analytics-account UA-2083680-7
 alias screen-auto-attach='screen -r `screen -ls | grep Detached | awk "{ print $1 }" | sort -r | head -1`'
 alias ec='env TERM=xterm-256color emacsclient -t -a emacs'
 alias cdgr='cd $(git rev-parse --show-toplevel)'
+alias pecode='code `find . | peco`'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
@@ -165,6 +166,10 @@ function peco-lscd {
         cd "$dir"
     fi
 }
+
+if [ -d $HOME/.nodebrew/current/bin ] ; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
