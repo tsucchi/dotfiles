@@ -133,7 +133,7 @@ alias ..='cd ..'
 alias su='su -m'
 alias emacs='env XMODIFIERS=@im=none emacs'
 alias rmchi='rm -f *~ .*~'
-alias less='less -X'
+alias less='less -X -R'
 alias vi='vim -u NONE --noplugin'
 
 alias cprove='cover --delete; env PERL5OPT="-MDevel::Cover=+ignore,.*,+select,^lib" prove -l'
