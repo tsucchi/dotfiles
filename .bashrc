@@ -86,6 +86,22 @@ __python_ps1 ()
   fi
 }
 
+__nodenv_ps1 ()
+{
+  if [ -e "$HOME/.nodenv" ] ; then
+    version=`nodenv version | sed -e 's/ .*//'`
+    if [ "$version" = "" ] ; then
+      printf ""
+    elif [ "$version" = "system" ] ; then
+      printf "[system-node]"
+    else
+      printf "[node-$version]"
+    fi
+  else
+    printf ""
+  fi
+}
+
 __screen_window ()
 {
     if [ -n "$WINDOW" ] ; then
@@ -100,7 +116,7 @@ if [ "`whoami`" = "root" ] ; then
   PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 else
   if [ -e $HOME/.git_completion ] ; then
-    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__python_ps1)\$(__p6_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
+    export PS1="[\w]\[\033[1;34m\]\$(__git_ps1)\[\033[0m\]\[\033[1;34m\]\$(__perl_ps1)\$(__ruby_ps1)\$(__nodenv_ps1)\$(__python_ps1)\$(__p6_ps1)\[\033[0m\]\n\[\033[0;32m\]\u@\h[\$(__screen_window)\!]$\[\033[0m\] "
   else
     export PS1="[\w]\n\[\033[0;32m\]\u@\h[\!]$\[\033[0m\] "
   fi
@@ -157,9 +173,9 @@ function peco-lscd {
     fi
 }
 
-if [ -d $HOME/.nodebrew/current/bin ] ; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-fi
+# if [ -d $HOME/.nodebrew/current/bin ] ; then
+#   export PATH=$HOME/.nodebrew/current/bin:$PATH
+# fi
 
 if [ -e "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
   source $HOME/perl5/perlbrew/etc/bashrc
@@ -174,7 +190,13 @@ if [ -d $HOME/.rbenv ] ; then
   eval "$(rbenv init -)"
 fi
 
+if [ -d $HOME/.nodenv ] ; then
+  export PATH=$HOME/.nodenv/bin:$PATH
+  eval "$(nodenv init -)"
+fi
+
 if [ -d "${PYENV_ROOT}" ]; then
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
@@ -187,4 +209,5 @@ fi
 export GOPATH="$HOME/go"
 #export GOROOT="/usr/local/opt/go/libexec"
 export PATH=$GOPATH/bin:$HOME/activator:$HOME/perl6/bin:$HOME/perl6/share/perl6/site/bin:$PATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# export PATH=$HOME/.nodebrew/current/bin:$PATH
+
