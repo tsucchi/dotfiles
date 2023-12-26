@@ -165,6 +165,7 @@ alias pecode='code `find . | peco`'
 alias tmux='tmux -u'
 alias tmux-mouse-on='tmux set -g mouse on'
 alias tmux-mouse-off='tmux set -g mouse off'
+alias wsl2_drop_caches='sudo sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
 
 function peco-lscd {
     local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
